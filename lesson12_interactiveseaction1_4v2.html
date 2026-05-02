@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<!-- Navigation: Tabbed (4 sections → tabbed model per skill guidelines) -->
+<!-- Lesson 12 Part 1: Trig Functions — Sections 1–4 | Math 172 | Santa Ana College -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12: Trig Functions | Math 172 — SAC</title>
+<script src="videos.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;font-size:15px;color:#1a1a1a;background:#f5f6fa;min-height:100vh}
+
+  /* ── HEADER ── */
+  .page-header{background:#1a1a2e;color:#fff;padding:0}
+  .header-top{padding:10px 24px 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#aab;opacity:.85}
+  .header-title{padding:6px 24px 14px;font-family:Georgia,serif;font-size:26px;font-weight:normal}
+  .header-title span{color:#e07020}
+
+  /* ── OBJECTIVES BAR ── */
+  .obj-bar{background:#2a2a4e;padding:10px 24px;font-size:13px;color:#d0d4f5;line-height:1.6}
+  .obj-bar strong{color:#7eb8e0}
+
+  /* ── TAB NAV ── */
+  .tab-nav{display:flex;background:#fff;border-bottom:3px solid #1a6b6b;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+  .tab-btn{flex:1;min-width:140px;padding:12px 8px;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-3px;cursor:pointer;font-size:13px;font-weight:600;color:#555;transition:all .2s;white-space:nowrap}
+  .tab-btn:hover{color:#1a6b6b;background:#f0fafa}
+  .tab-btn.active{color:#1a6b6b;border-bottom-color:#1a6b6b;background:#f0fafa}
+
+  /* ── TAB CONTENT ── */
+  .tab-panel{display:none;padding:28px 24px;max-width:960px;margin:0 auto;animation:fadeIn .25s ease}
+  .tab-panel.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ── SECTION HEADING ── */
+  .sec-head{color:#1a6b6b;font-family:Georgia,serif;font-size:22px;border-bottom:2px solid #1a6b6b;padding-bottom:8px;margin:0 0 20px}
+  .subsec{color:#1a1a2e;font-size:16px;font-weight:700;margin:24px 0 10px}
+
+  /* ── DEFINITION BOX ── */
+  .def-box{background:#e6f4f4;border-left:4px solid #1a6b6b;padding:14px 18px;margin:16px 0 20px;border-radius:0 8px 8px 0}
+  .def-box .label{font-size:11px;color:#555;font-style:italic;margin-bottom:6px}
+  .def-box p{margin:6px 0;font-size:15px;line-height:1.7}
+
+  /* ── REMINDER BOX ── */
+  .remind{background:#fff3e6;border-left:4px solid #e07020;padding:12px 16px;margin:16px 0 20px;border-radius:0 8px 8px 0}
+  .remind p{margin:0;font-size:14px;line-height:1.6}
+
+  /* ── WORKED EXAMPLE ── */
+  .example{background:#fff;border:1px solid #dde;border-radius:8px;padding:20px;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .example h3{color:#1a6b6b;font-size:16px;margin-bottom:8px}
+  .example .try-cue{font-style:italic;color:#666;font-size:13px;margin-bottom:10px}
+  .step{border-top:1px solid #eee;padding:10px 0 4px;margin-top:8px}
+  .step strong{color:#1a6b6b}
+  .answer-box{background:#e6f4f4;border-left:4px solid #1a6b6b;padding:10px 14px;margin-top:14px;border-radius:0 6px 6px 0;font-size:15px}
+  .answer-box strong{color:#1a6b6b}
+  .hidden{display:none}
+
+  /* ── GUESS BEFORE REVEAL ── */
+  .gbr{background:#fff9f0;border:1px solid #f0c080;border-radius:8px;padding:18px;margin:20px 0}
+  .gbr h4{color:#c06000;font-size:14px;margin-bottom:10px}
+  .gbr textarea{width:100%;border:1px solid #ddd;border-radius:4px;padding:8px;font-size:14px;resize:vertical;min-height:60px}
+  .gbr .reveal-area{display:none;margin-top:12px;background:#f0fafa;border-radius:6px;padding:12px;font-size:14px;line-height:1.7}
+
+  /* ── PRACTICE ── */
+  .practice{background:#fff;border:1px solid #dde;border-radius:8px;padding:18px;margin:20px 0}
+  .practice h3{color:#1a1a2e;font-size:15px;margin-bottom:12px}
+  .prob{margin:12px 0 8px;padding-left:4px}
+  .work-space{border:1px dashed #bbb;border-radius:4px;background:#fafafa;height:80px;margin:6px 0 14px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:13px;font-style:italic}
+
+  /* ── GRAPH SPACE ── */
+  .graph-box{border:1px dashed #aaa;border-radius:8px;background:#fafafa;padding:12px 16px;margin:12px 0;min-height:180px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;font-style:italic;flex-direction:column;gap:6px}
+  .desmos-frame{width:100%;height:400px;border:1px solid #ccc;border-radius:8px;margin:16px 0}
+
+  /* ── TABLE ── */
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th{background:#1a1a2e;color:#fff;padding:10px 12px;text-align:left}
+  td{padding:9px 12px;border-bottom:1px solid #eee}
+  tr:nth-child(even) td{background:#f8faff}
+  .quick-ref th{background:#1a6b6b}
+
+  /* ── COLLAB ── */
+  .collab{background:#f0f8ff;border:2px dashed #1a6b6b;border-radius:8px;padding:20px;margin:24px 0}
+  .collab h3{color:#1a6b6b;margin-bottom:12px}
+  .collab-prob{border-bottom:1px solid #cde;padding:14px 0}
+  .collab-prob:last-child{border-bottom:none}
+  .fill-row{display:flex;flex-wrap:wrap;gap:18px;margin:10px 0}
+  .fill-item{display:flex;flex-direction:column;gap:4px;min-width:120px}
+  .fill-item label{font-size:12px;color:#555}
+  .fill-item input{border:none;border-bottom:2px solid #1a6b6b;background:transparent;width:120px;font-size:14px;padding:2px 4px;outline:none}
+
+  /* ── BUTTONS ── */
+  .btn-teal{background:#1a6b6b;color:#fff;border:none;padding:9px 20px;border-radius:4px;cursor:pointer;font-size:14px;font-weight:600;margin:8px 0;transition:background .2s}
+  .btn-teal:hover{background:#145858}
+  .btn-orange{background:#e07020;color:#fff;border:none;padding:9px 20px;border-radius:4px;cursor:pointer;font-size:14px;font-weight:600;margin:8px 0;transition:background .2s}
+  .btn-orange:hover{background:#c06010}
+  .btn-sm{padding:6px 14px;font-size:13px}
+
+  /* ── EXIT CHECK ── */
+  #exit-check{background:#f0f8f8;border-top:3px solid #1a6b6b;padding:28px 24px;margin-top:40px}
+  #exit-check h2{color:#1a6b6b;font-size:20px;margin-bottom:20px}
+  .exit-q{margin-bottom:24px}
+  .exit-q p{font-weight:bold;margin-bottom:8px}
+  .exit-q label{display:block;margin:4px 0;cursor:pointer}
+  .fb-box{display:none;margin-top:8px;padding:10px;border-radius:6px;font-size:14px}
+  #stars{font-size:32px;cursor:pointer;letter-spacing:6px;display:inline-block}
+  #star-label{font-size:13px;color:#888;margin-top:4px}
+
+  /* ── YOUTUBE TOGGLE ── */
+  .yt-toggle{width:100%;text-align:left;background:#1a1a2e;color:#fff;border:none;
+    padding:11px 18px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;
+    margin:20px 0 0;display:flex;align-items:center;gap:10px;transition:background .2s}
+  .yt-toggle:hover{background:#2a2a4e}
+  .yt-toggle .yt-icon{font-size:18px;flex-shrink:0}
+  .yt-panel{display:none;margin-top:4px;border-radius:0 0 8px 8px;overflow:hidden;
+    border:1px solid #ddd;border-top:none}
+  .yt-panel iframe{display:block;width:100%;height:380px}
+
+  /* ── FOOTER ── */
+  footer{text-align:center;font-size:12px;color:#888;padding:24px;border-top:2px solid #1a1a2e;margin-top:40px}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:600px){.tab-btn{font-size:11px;padding:10px 4px}.header-title{font-size:20px}}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="page-header">
+  <div class="header-top">Math 172 — Precalculus &nbsp;|&nbsp; Santa Ana College</div>
+  <div class="header-title">Lesson 12: <span>Trig Functions</span> &amp; Inverse Trig Functions &nbsp;·&nbsp; <em style="font-size:18px;color:#aab">Part 1</em></div>
+</div>
+<div class="obj-bar">
+  <strong>Learning Objectives (Part 1):</strong>
+  &nbsp;Analyze and graph trigonometric functions (sine, cosine, tangent, reciprocal functions);
+  describe transformed graphs using technology.
+</div>
+
+<!-- ══ TAB NAV ══ -->
+<div class="tab-nav" role="tablist">
+  <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('s1',this)">§1 Sine &amp; Cosine</button>
+  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('s2',this)">§2 Tangent</button>
+  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('s3',this)">§3 Reciprocal Functions</button>
+  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('s4',this)">§4 Transformations</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 1 — GRAPHING SINE AND COSINE
+══════════════════════════════════════════════ -->
+<div id="s1" class="tab-panel active">
+  <h2 class="sec-head">Section 1: Graphing Sine and Cosine</h2>
+  <p style="color:#555;font-size:13px;margin-bottom:16px">Source: OpenStax Algebra and Trigonometry 2e — Section 8.1</p>
+
+  <!-- DEFINITION BOX -->
+  <div class="def-box">
+    <div class="label">Definition</div>
+    <p><strong>Sinusoidal Function:</strong> A function with the same general shape as a sine or cosine function.</p>
+    <p><strong>General forms:</strong></p>
+    <p>\[ y = A\sin(Bx - C) + D \qquad \text{or} \qquad y = A\cos(Bx - C) + D \]</p>
+    <p><strong>Period:</strong> \(2\pi\) &nbsp;|&nbsp; <strong>Domain:</strong> \((-\infty, \infty)\) &nbsp;|&nbsp; <strong>Range:</strong> \([-1, 1]\)</p>
+    <p style="margin-top:8px">\(y = \sin(x)\) is <strong>ODD</strong> — symmetric about the origin &nbsp;[\(\sin(-x) = -\sin(x)\)]</p>
+    <p>\(y = \cos(x)\) is <strong>EVEN</strong> — symmetric about the \(y\)-axis &nbsp;[\(\cos(-x) = \cos(x)\)]</p>
+  </div>
+
+  <div class="remind">
+    <p><strong>⚠ Key Reminder:</strong> The outputs of sine and cosine are <em>coordinates on the unit circle</em> — always between \(-1\) and \(1\). They are periodic because the unit circle repeats every full rotation (\(2\pi\) radians).</p>
+  </div>
+
+  <!-- GUESS BEFORE REVEAL -->
+  <div class="gbr">
+    <h4>🤔 Think First — Before We Graph</h4>
+    <p style="font-size:14px;margin-bottom:8px">Imagine tracing the <em>y</em>-coordinate of a point moving around the unit circle. What shape do you predict the graph of \(y = \sin(x)\) will make? Why?</p>
+    <textarea placeholder="Type your prediction here..."></textarea>
+    <br>
+    <button class="btn-orange btn-sm" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Reveal Answer</button>
+    <div class="reveal-area" style="display:none">
+      <strong>✅ The sine graph is a wave!</strong> As the angle \(x\) increases from \(0\) to \(2\pi\), the \(y\)-coordinate on the unit circle rises from \(0\) to \(1\), falls back through \(0\) to \(-1\), and returns to \(0\) — creating one full cycle of the characteristic S-shaped wave.
+    </div>
+  </div>
+
+  <!-- DESMOS: sin(x) -->
+  <div class="subsec">Graph of \(f(x) = \sin(x)\)</div>
+  <p style="font-size:14px;margin-bottom:8px">Interact with the graph below. Identify the <strong>period</strong>, <strong>amplitude</strong>, <strong>x-intercepts</strong>, and where the function reaches its maximum and minimum values.</p>
+
+  <div id="desmos-sin" style="width:100%;height:380px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px">
+    <div style="background:#e6f4f4;border-radius:6px;padding:10px 16px;font-size:14px;flex:1;min-width:160px">
+      <strong>Maximum:</strong> \(y = 1\) at \(x = \frac{\pi}{2} + 2\pi n\)
+    </div>
+    <div style="background:#e6f4f4;border-radius:6px;padding:10px 16px;font-size:14px;flex:1;min-width:160px">
+      <strong>Minimum:</strong> \(y = -1\) at \(x = \frac{3\pi}{2} + 2\pi n\)
+    </div>
+    <div style="background:#e6f4f4;border-radius:6px;padding:10px 16px;font-size:14px;flex:1;min-width:160px">
+      <strong>Zeros:</strong> \(x = k\pi\), \(k \in \mathbb{Z}\)
+    </div>
+  </div>
+
+  <!-- DESMOS: cos(x) -->
+  <div class="subsec">Graph of \(f(x) = \cos(x)\)</div>
+  <p style="font-size:14px;margin-bottom:8px">The cosine function starts at its <strong>maximum</strong> when \(x = 0\). Compare it to the sine function — how are they related?</p>
+
+  <div id="desmos-cos" style="width:100%;height:380px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <div class="remind" style="margin-top:12px">
+    <p><strong>🔑 Sine vs. Cosine Connection:</strong> \(\cos(x) = \sin\!\left(x + \dfrac{\pi}{2}\right)\) — cosine is just sine shifted left by \(\dfrac{\pi}{2}\). They are the same wave, just out of phase!</p>
+  </div>
+
+  <!-- 📺 VIDEO EXPLAINER — SECTION 1 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Graphing Sine &amp; Cosine"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Graphing Sine &amp; Cosine
+    </span>
+  </button>
+  <div class="yt-panel" id="yt-panel-s1"></div>
+
+  <!-- GUIDED PRACTICE -->
+  <div class="practice">
+    <h3>✏ Guided Practice — Graph the following. State domain and range.</h3>
+
+    <div class="prob"><strong>1. \(f(x) = \sin(x)\)</strong></div>
+    <!-- SVG blank grid -->
+    <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;border:1px solid #ccc;border-radius:4px;background:#fff;margin:8px 0 4px">
+      <!-- grid lines vertical -->
+      <defs><pattern id="vgrid" width="40" height="200" patternUnits="userSpaceOnUse"><line x1="40" y1="0" x2="40" y2="200" stroke="#e0e0e0" stroke-width="0.7"/></pattern>
+      <pattern id="hgrid" width="560" height="20" patternUnits="userSpaceOnUse"><line x1="0" y1="20" x2="560" y2="20" stroke="#e0e0e0" stroke-width="0.7"/></pattern></defs>
+      <rect width="560" height="200" fill="url(#hgrid)"/>
+      <rect width="560" height="200" fill="url(#vgrid)"/>
+      <!-- axes -->
+      <line x1="40" y1="100" x2="540" y2="100" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="10" x2="60" y2="190" stroke="#555" stroke-width="1.5"/>
+      <!-- y-axis ticks -->
+      <line x1="55" y1="20" x2="65" y2="20" stroke="#555" stroke-width="1"/><text x="30" y="24" font-size="9" fill="#555" text-anchor="middle">1</text>
+      <line x1="55" y1="60" x2="65" y2="60" stroke="#555" stroke-width="1"/><text x="30" y="64" font-size="9" fill="#555" text-anchor="middle">0.5</text>
+      <line x1="55" y1="140" x2="65" y2="140" stroke="#555" stroke-width="1"/><text x="32" y="144" font-size="9" fill="#555" text-anchor="middle">-0.5</text>
+      <line x1="55" y1="180" x2="65" y2="180" stroke="#555" stroke-width="1"/><text x="28" y="184" font-size="9" fill="#555" text-anchor="middle">-1</text>
+      <!-- x-axis labels: π/4 increments -->
+      <text x="100" y="114" font-size="8" fill="#555" text-anchor="middle">π/4</text>
+      <text x="140" y="114" font-size="8" fill="#555" text-anchor="middle">π/2</text>
+      <text x="180" y="114" font-size="8" fill="#555" text-anchor="middle">3π/4</text>
+      <text x="220" y="114" font-size="8" fill="#555" text-anchor="middle">π</text>
+      <text x="260" y="114" font-size="8" fill="#555" text-anchor="middle">5π/4</text>
+      <text x="300" y="114" font-size="8" fill="#555" text-anchor="middle">3π/2</text>
+      <text x="340" y="114" font-size="8" fill="#555" text-anchor="middle">7π/4</text>
+      <text x="380" y="114" font-size="8" fill="#555" text-anchor="middle">2π</text>
+      <text x="420" y="114" font-size="8" fill="#555" text-anchor="middle">9π/4</text>
+      <text x="460" y="114" font-size="8" fill="#555" text-anchor="middle">5π/2</text>
+      <text x="500" y="114" font-size="8" fill="#555" text-anchor="middle">3π</text>
+      <text x="50" y="114" font-size="8" fill="#555" text-anchor="middle">0</text>
+      <text x="20" y="114" font-size="8" fill="#555" text-anchor="middle">-π/4</text>
+    </svg>
+    <p style="font-size:12px;color:#888;margin-bottom:12px">Graph the function above, then record:</p>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px">
+      <span style="font-size:14px"><strong>Domain:</strong> <span style="display:inline-block;width:140px;border-bottom:1px solid #333;">&nbsp;</span></span>
+      <span style="font-size:14px"><strong>Range:</strong> <span style="display:inline-block;width:120px;border-bottom:1px solid #333;">&nbsp;</span></span>
+    </div>
+
+    <div class="prob"><strong>2. \(f(x) = \cos(x)\)</strong></div>
+    <div class="graph-box">Graph \(f(x)=\cos(x)\) — label max/min, zeros, period</div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:8px">
+      <span style="font-size:14px"><strong>Domain:</strong> <span style="display:inline-block;width:140px;border-bottom:1px solid #333;">&nbsp;</span></span>
+      <span style="font-size:14px"><strong>Range:</strong> <span style="display:inline-block;width:120px;border-bottom:1px solid #333;">&nbsp;</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 2 — GRAPHING TANGENT
+══════════════════════════════════════════════ -->
+<div id="s2" class="tab-panel">
+  <h2 class="sec-head">Section 2: Graphing the Tangent Function</h2>
+  <p style="color:#555;font-size:13px;margin-bottom:16px">Source: OpenStax Algebra and Trigonometry 2e — Section 8.2</p>
+
+  <div class="def-box">
+    <div class="label">Definition</div>
+    <p><strong>Tangent Function:</strong> \(\displaystyle\tan(x) = \frac{\sin(x)}{\cos(x)}\) — an <strong>ODD</strong> function with period \(\pi\).</p>
+    <p style="margin-top:10px"><strong>Features of \(y = A\tan(Bx)\):</strong></p>
+    <ul style="margin:8px 0 0 20px;line-height:2">
+      <li>Stretching/compressing factor: \(|A|\)</li>
+      <li>Period: \(\dfrac{\pi}{|B|}\)</li>
+      <li>Vertical asymptotes wherever \(\cos(x) = 0\), i.e., at \(x = \dfrac{\pi}{2} + k\pi\) (\(k\) any integer)</li>
+      <li>Domain: all real numbers except asymptote locations</li>
+      <li>Range: \((-\infty, \infty)\)</li>
+      <li><strong>No amplitude</strong> — the function grows without bound near each asymptote</li>
+    </ul>
+  </div>
+
+  <div class="remind">
+    <p><strong>⚠ Key Reminder:</strong> Tangent is undefined wherever cosine equals zero — those are the vertical asymptote locations. The graph passes through the <em>origin</em> and <em>increases</em> through each period. Each period looks like an S-curve between two asymptotes.</p>
+  </div>
+
+  <!-- GUESS BEFORE REVEAL -->
+  <div class="gbr">
+    <h4>🤔 Think First</h4>
+    <p style="font-size:14px;margin-bottom:8px">If \(\tan(x) = \frac{\sin(x)}{\cos(x)}\), what happens to the output when \(\cos(x)\) gets very close to zero? What should the graph look like near those \(x\)-values?</p>
+    <textarea placeholder="Describe your prediction..."></textarea>
+    <br>
+    <button class="btn-orange btn-sm" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Reveal Answer</button>
+    <div class="reveal-area" style="display:none">
+      <strong>✅ Vertical asymptotes!</strong> When \(\cos(x) \to 0\), the denominator approaches zero while the numerator \(\sin(x)\) stays near \(\pm 1\). So the ratio \(\frac{\sin(x)}{\cos(x)}\) explodes toward \(\pm\infty\) — creating vertical asymptotes at every \(x = \frac{\pi}{2} + k\pi\).
+    </div>
+  </div>
+
+  <!-- DESMOS: tan(x) -->
+  <div class="subsec">Graph of \(f(x) = \tan(x)\)</div>
+  <p style="font-size:14px;margin-bottom:8px">Observe the asymptotes (dashed red) and the increasing behavior within each period. Notice that the graph has <strong>no amplitude</strong>.</p>
+  <div id="desmos-tan" style="width:100%;height:420px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <div class="remind" style="margin-top:8px">
+    <p><strong>🔑 Why no amplitude?</strong> Amplitude measures the maximum distance from the midline. Since \(\tan(x)\) grows without bound near its asymptotes, there is no finite maximum — so amplitude is not defined for tangent (or cotangent).</p>
+  </div>
+
+  <!-- 📺 VIDEO EXPLAINER — SECTION 2 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Graphing Tangent"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Graphing Tangent
+    </span>
+  </button>
+  <div class="yt-panel" id="yt-panel-s2"></div>
+
+  <!-- GUIDED PRACTICE -->
+  <div class="practice">
+    <h3>✏ Guided Practice</h3>
+    <div class="prob"><strong>Graph \(f(x) = \tan(x)\). State the domain and range.</strong></div>
+    <div class="graph-box">Graph \(f(x)=\tan(x)\) — draw asymptotes as dashed lines, mark key points \((0,0)\), \((\frac{\pi}{4},1)\), \((-\frac{\pi}{4},-1)\)</div>
+
+    <div style="margin:12px 0">
+      <p style="font-size:14px"><strong>Vertical asymptotes at:</strong>
+        <span style="display:inline-block;width:280px;border-bottom:1px solid #333;">&nbsp;</span>
+      </p>
+    </div>
+
+    <div style="display:flex;gap:24px;flex-wrap:wrap;margin:8px 0">
+      <span style="font-size:14px"><strong>Domain:</strong> <span style="display:inline-block;width:200px;border-bottom:1px solid #333;">&nbsp;</span></span>
+      <span style="font-size:14px"><strong>Range:</strong> <span style="display:inline-block;width:140px;border-bottom:1px solid #333;">&nbsp;</span></span>
+    </div>
+
+    <div class="prob" style="margin-top:16px"><strong>Key points within one period \(\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)\):</strong></div>
+    <table style="max-width:420px">
+      <tr><th>\(x\)</th><th>\(-\frac{\pi}{3}\)</th><th>\(-\frac{\pi}{4}\)</th><th>\(0\)</th><th>\(\frac{\pi}{4}\)</th><th>\(\frac{\pi}{3}\)</th></tr>
+      <tr><td>\(\tan(x)\)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 3 — RECIPROCAL TRIG FUNCTIONS
+══════════════════════════════════════════════ -->
+<div id="s3" class="tab-panel">
+  <h2 class="sec-head">Section 3: Graphing Reciprocal Trigonometric Functions</h2>
+  <p style="color:#555;font-size:13px;margin-bottom:16px">Source: OpenStax Algebra and Trigonometry 2e — Section 8.2</p>
+
+  <p style="margin-bottom:16px;line-height:1.8">Three additional trig functions are the <strong>reciprocals</strong> of sine, cosine, and tangent. Wherever the parent function equals <strong>zero</strong>, the reciprocal has a <strong>vertical asymptote</strong> (you can't divide by zero).</p>
+
+  <!-- Three def boxes -->
+  <div class="def-box">
+    <div class="label">Cosecant</div>
+    <p>\(\displaystyle\csc(x) = \frac{1}{\sin(x)}\)</p>
+    <p style="margin-top:6px">Vertical asymptotes: \(x = k\pi\) &nbsp;|&nbsp; Domain: all reals except \(x = k\pi\)</p>
+    <p>Range: \((-\infty, -1] \cup [1, \infty)\) &nbsp;|&nbsp; Period: \(2\pi\)</p>
+  </div>
+
+  <div class="def-box">
+    <div class="label">Secant</div>
+    <p>\(\displaystyle\sec(x) = \frac{1}{\cos(x)}\)</p>
+    <p style="margin-top:6px">Vertical asymptotes: \(x = \dfrac{\pi}{2} + k\pi\) &nbsp;|&nbsp; Domain: all reals except \(x = \dfrac{\pi}{2} + k\pi\)</p>
+    <p>Range: \((-\infty, -1] \cup [1, \infty)\) &nbsp;|&nbsp; Period: \(2\pi\)</p>
+  </div>
+
+  <div class="def-box">
+    <div class="label">Cotangent</div>
+    <p>\(\displaystyle\cot(x) = \frac{\cos(x)}{\sin(x)} = \frac{1}{\tan(x)}\)</p>
+    <p style="margin-top:6px">Vertical asymptotes: \(x = k\pi\) &nbsp;|&nbsp; Domain: all reals except \(x = k\pi\)</p>
+    <p>Range: \((-\infty, \infty)\) &nbsp;|&nbsp; Period: \(\pi\) &nbsp; (graph <strong>decreases</strong> through each period)</p>
+  </div>
+
+  <!-- QUICK REFERENCE TABLE -->
+  <div class="subsec">Quick Reference — Reciprocal Trig Functions</div>
+  <table class="quick-ref">
+    <tr><th>Function</th><th>Defined As</th><th>Period</th><th>Asymptotes At</th><th>Range</th></tr>
+    <tr><td>\(\csc(x)\)</td><td>\(1/\sin(x)\)</td><td>\(2\pi\)</td><td>\(x = k\pi\)</td><td>\((-\infty,-1]\cup[1,\infty)\)</td></tr>
+    <tr><td>\(\sec(x)\)</td><td>\(1/\cos(x)\)</td><td>\(2\pi\)</td><td>\(x = \frac{\pi}{2}+k\pi\)</td><td>\((-\infty,-1]\cup[1,\infty)\)</td></tr>
+    <tr><td>\(\cot(x)\)</td><td>\(\cos(x)/\sin(x)\)</td><td>\(\pi\)</td><td>\(x = k\pi\)</td><td>\((-\infty,\infty)\)</td></tr>
+  </table>
+
+  <div class="remind">
+    <p><strong>🔑 Desmos Strategy:</strong> Graph the parent function first (e.g., \(\sin(x)\)), then overlay its reciprocal (\(\csc(x)\)). The reciprocal's asymptotes land <em>exactly</em> where the parent crosses zero, and its U-shaped arches touch the parent at its peaks and valleys.</p>
+  </div>
+
+  <!-- DESMOS: sin + csc -->
+  <div class="subsec">1. \(f(x) = \sin(x)\) and \(g(x) = \csc(x)\)</div>
+  <p style="font-size:14px;margin-bottom:8px">Toggle each function using the colored circles on the left side of the graph. Notice where the U-shaped arches of \(\csc(x)\) touch the \(\sin(x)\) curve.</p>
+  <div id="desmos-csc" style="width:100%;height:380px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <!-- DESMOS: cos + sec -->
+  <div class="subsec">2. \(f(x) = \cos(x)\) and \(g(x) = \sec(x)\)</div>
+  <div id="desmos-sec" style="width:100%;height:380px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <!-- DESMOS: tan + cot -->
+  <div class="subsec">3. \(f(x) = \tan(x)\) and \(g(x) = \cot(x)\)</div>
+  <div id="desmos-cot" style="width:100%;height:380px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <!-- 📺 VIDEO EXPLAINER — SECTION 3 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Reciprocal Trig Functions"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Reciprocal Trig Functions
+    </span>
+  </button>
+  <div class="yt-panel" id="yt-panel-s3"></div>
+
+  <!-- Guided Practice -->
+  <div class="practice">
+    <h3>✏ Guided Practice — Use Desmos graphs above to answer:</h3>
+
+    <div class="collab-prob">
+      <p style="font-size:14px"><strong>1. For \(\csc(x)\):</strong> Where are the vertical asymptotes? How do you know from looking at \(\sin(x)\)?</p>
+      <div class="work-space">Write your answer here</div>
+    </div>
+
+    <div class="collab-prob">
+      <p style="font-size:14px"><strong>2. For \(\sec(x)\):</strong> Where are the vertical asymptotes? Why are they in different locations than \(\csc(x)\)?</p>
+      <div class="work-space">Write your answer here</div>
+    </div>
+
+    <div class="collab-prob">
+      <p style="font-size:14px"><strong>3. How does \(\cot(x)\) differ from \(\tan(x)\)?</strong> Consider: direction, asymptote locations, and period.</p>
+      <div class="work-space">Write your answer here</div>
+    </div>
+  </div>
+
+  <!-- GUESS BEFORE REVEAL for cot vs tan -->
+  <div class="gbr">
+    <h4>🤔 Cot vs. Tan — Key Differences</h4>
+    <p style="font-size:14px;margin-bottom:8px">Before revealing, write one difference between \(\tan(x)\) and \(\cot(x)\) that you noticed in the Desmos graph:</p>
+    <textarea placeholder="I noticed that..."></textarea>
+    <br>
+    <button class="btn-orange btn-sm" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Reveal Key Differences</button>
+    <div class="reveal-area" style="display:none">
+      <strong>✅ Three key differences between \(\cot(x)\) and \(\tan(x)\):</strong>
+      <ol style="margin:8px 0 0 20px;line-height:2">
+        <li><strong>Direction:</strong> \(\tan(x)\) <em>increases</em> through each period; \(\cot(x)\) <em>decreases</em></li>
+        <li><strong>Asymptotes:</strong> \(\tan(x)\) has asymptotes at \(x = \frac{\pi}{2} + k\pi\); \(\cot(x)\) has asymptotes at \(x = k\pi\)</li>
+        <li><strong>Period:</strong> Both have period \(\pi\), but they are shifted — \(\cot(x)\) starts from a high value on the left and falls to the right</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 4 — TRANSFORMATIONS
+══════════════════════════════════════════════ -->
+<div id="s4" class="tab-panel">
+  <h2 class="sec-head">Section 4: Describing Transformations of Trigonometric Functions</h2>
+  <p style="color:#555;font-size:13px;margin-bottom:16px">Source: OpenStax Algebra and Trigonometry 2e — Section 8.1</p>
+
+  <div class="def-box">
+    <div class="label">Transformed Sinusoidal Form</div>
+    <p>\[ f(x) = A\sin\!\bigl(B(x - D)\bigr) + C \]</p>
+    <table style="margin:12px 0;font-size:14px">
+      <tr><th>Parameter</th><th>Name</th><th>Effect</th></tr>
+      <tr><td><strong>\(A\)</strong></td><td>Amplitude</td><td>Vertical stretch/compress; amplitude = \(|A|\). If \(A < 0\), reflection over \(x\)-axis.</td></tr>
+      <tr><td><strong>\(B\)</strong></td><td>Period factor</td><td>Period = \(\dfrac{2\pi}{|B|}\). If \(|B|>1\) → compress; if \(|B|<1\) → stretch.</td></tr>
+      <tr><td><strong>\(D\)</strong></td><td>Phase (horizontal) shift</td><td>Shift right by \(D\) (left if \(D < 0\)). <strong>Factor out \(B\) first!</strong></td></tr>
+      <tr><td><strong>\(C\)</strong></td><td>Vertical shift</td><td>Midline moves to \(y = C\); range becomes \([C - |A|,\; C + |A|]\).</td></tr>
+    </table>
+  </div>
+
+  <div class="remind">
+    <p><strong>⚠ Key Reminder:</strong> The horizontal shift is \(D\) (not \(BD\)). You must <strong>factor out \(B\) first</strong> so the form is \(B(x - D)\), then read \(D\) directly. Example: \(y = \sin(3x - \pi)\) → factor: \(y = \sin\!\bigl(3\!\left(x - \tfrac{\pi}{3}\right)\bigr)\) → phase shift = \(\tfrac{\pi}{3}\), NOT \(\pi\).</p>
+  </div>
+
+  <!-- GUESS BEFORE REVEAL -->
+  <div class="gbr">
+    <h4>🤔 Predict the Effect</h4>
+    <p style="font-size:14px;margin-bottom:8px">For \(g(x) = 1.5\cos(2x)\) compared to \(f(x) = \cos(x)\): what do you predict will change in the graph? What stays the same?</p>
+    <textarea placeholder="A = 1.5 means... B = 2 means... so the graph will..."></textarea>
+    <br>
+    <button class="btn-orange btn-sm" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Reveal Answer</button>
+    <div class="reveal-area" style="display:none">
+      <strong>✅ Predicted effects:</strong>
+      <ul style="margin:8px 0 0 20px;line-height:2">
+        <li>\(A = 1.5\) → amplitude increases from \(1\) to \(1.5\) (taller waves)</li>
+        <li>\(B = 2\) → period = \(\frac{2\pi}{2} = \pi\) (shorter, faster cycles — twice as many waves in the same window)</li>
+        <li>No phase shift (\(D = 0\)) and no vertical shift (\(C = 0\)) — same starting point and same midline</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DESMOS: cos(x) vs 1.5cos(2x) with sliders -->
+  <div class="subsec">Interactive Explorer: Effect of A and B</div>
+  <p style="font-size:14px;margin-bottom:8px">Use the sliders below to change \(A\) and \(B\). Watch how the graph changes in real time. Start with \(A=1, B=1\) (the basic cosine), then try \(A=1.5, B=2\).</p>
+  <div id="desmos-transform" style="width:100%;height:420px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <!-- 📺 VIDEO EXPLAINER — SECTION 4 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Transformations of Trig Functions"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Transformations of Trig Functions
+    </span>
+  </button>
+  <div class="yt-panel" id="yt-panel-s4"></div>
+
+  <!-- GUIDED PRACTICE TABLE -->
+  <div class="practice">
+    <h3>✏ Guided Practice — \(f(x) = \cos(x)\) vs. \(g(x) = 1.5\cos(2x)\)</h3>
+    <p style="font-size:14px;margin-bottom:12px">Use the Desmos graph above to complete the table:</p>
+    <table style="max-width:560px">
+      <tr><th></th><th>Amplitude</th><th>Period</th><th>Frequency</th></tr>
+      <tr><td><strong>\(f(x) = \cos(x)\)</strong></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+      <tr><td><strong>\(g(x) = 1.5\cos(2x)\)</strong></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+    </table>
+    <p style="font-size:13px;color:#666;margin-top:8px">Frequency = \(\dfrac{|B|}{2\pi} = \dfrac{1}{\text{period}}\)</p>
+  </div>
+
+  <!-- WORKED EXAMPLE: y = 3sin(3/2(x-pi)) - 4 -->
+  <div class="subsec">Worked Example — Describing a Full Transformation</div>
+  <div class="example">
+    <h3>Example: \(y = 3\sin\!\left(\dfrac{3}{2}(x - \pi)\right) - 4\)</h3>
+    <p class="try-cue">Try to identify each transformation before clicking to reveal each step.</p>
+    <p><strong>Task:</strong> Describe all transformations and identify the domain and range.</p>
+
+    <div id="ex1-steps" class="hidden">
+      <div class="step">
+        <strong>Step 1 — Identify the form and parameters</strong>
+        <p>The equation is in the form \(y = A\sin\!\bigl(B(x - D)\bigr) + C\) with:</p>
+        <p style="margin:6px 0 0 16px">\(A = 3\), &nbsp;\(B = \dfrac{3}{2}\), &nbsp;\(D = \pi\), &nbsp;\(C = -4\)</p>
+      </div>
+      <div class="step">
+        <strong>Step 2 — Amplitude</strong>
+        <p>Amplitude \(= |A| = |3| = \mathbf{3}\)</p>
+        <p>The graph reaches 3 units above and 3 units below the midline.</p>
+      </div>
+      <div class="step">
+        <strong>Step 3 — Period</strong>
+        <p>\(\text{Period} = \dfrac{2\pi}{|B|} = \dfrac{2\pi}{\;\frac{3}{2}\;} = 2\pi \cdot \dfrac{2}{3} = \dfrac{4\pi}{3}\)</p>
+      </div>
+      <div class="step">
+        <strong>Step 4 — Horizontal (Phase) Shift</strong>
+        <p>\(D = \pi\) → shift <strong>right</strong> by \(\pi\) units</p>
+        <p style="font-size:13px;color:#666">Remember: the equation is already factored as \(B(x - D)\), so read \(D\) directly.</p>
+      </div>
+      <div class="step">
+        <strong>Step 5 — Vertical Shift &amp; Midline</strong>
+        <p>\(C = -4\) → shift <strong>down</strong> 4 units. The midline is \(y = -4\).</p>
+      </div>
+      <div class="step">
+        <strong>Step 6 — Domain and Range</strong>
+        <p>Domain: \((-\infty, \infty)\) — sine is defined for all real numbers</p>
+        <p>Range: \([C - |A|,\; C + |A|] = [-4 - 3,\; -4 + 3] = \mathbf{[-7,\; -1]}\)</p>
+      </div>
+      <div class="answer-box">
+        <strong>Summary:</strong>
+        <ul style="margin:8px 0 0 20px;line-height:2">
+          <li>Amplitude: \(3\) &nbsp;|&nbsp; Period: \(\dfrac{4\pi}{3}\) &nbsp;|&nbsp; H-shift: right \(\pi\) &nbsp;|&nbsp; V-shift: down \(4\)</li>
+          <li>Domain: \((-\infty, \infty)\) &nbsp;|&nbsp; Range: \([-7, -1]\)</li>
+        </ul>
+      </div>
+    </div>
+    <button class="btn-teal" onclick="revealSteps('ex1')">Show Example Solution</button>
+  </div>
+
+  <!-- DESMOS: the example function -->
+  <div class="subsec">Graph of \(y = 3\sin\!\left(\tfrac{3}{2}(x-\pi)\right) - 4\)</div>
+  <p style="font-size:14px;margin-bottom:8px">Verify your answers from the example. Can you identify the midline \(y=-4\), the amplitude \(3\), and the horizontal shift visually?</p>
+  <div id="desmos-example" style="width:100%;height:400px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <!-- COLLABORATIVE LEARNING -->
+  <div class="collab">
+    <h3>👥 Collaborative Learning — Transformed Trig Functions</h3>
+    <p style="font-size:13px;margin-bottom:16px;color:#555">Work through these problems with your group. Describe all transformations, identify domain and range, and use Desmos to sketch an annotated graph.</p>
+
+    <div class="collab-prob">
+      <p class="prob"><strong>1. \(y = \dfrac{1}{2}\cos(x - \pi) - 2\)</strong></p>
+      <p style="font-size:13px;color:#777;margin-bottom:8px">Transformations: <span style="display:inline-block;width:280px;border-bottom:1px solid #aaa;">&nbsp;</span></p>
+      <div class="fill-row">
+        <div class="fill-item"><label>Amplitude</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>Period</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>H-shift</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>V-shift</label><input type="text" placeholder=""></div>
+      </div>
+      <p style="font-size:14px;margin-top:4px">Domain: <span style="display:inline-block;width:120px;border-bottom:1px solid #aaa;">&nbsp;</span> &nbsp; Range: <span style="display:inline-block;width:120px;border-bottom:1px solid #aaa;">&nbsp;</span></p>
+    </div>
+
+    <div class="collab-prob">
+      <p class="prob"><strong>2. \(y = -2\sin\!\left(2\!\left(x + \dfrac{\pi}{4}\right)\right) + 1\)</strong></p>
+      <p style="font-size:13px;color:#777;margin-bottom:8px">Transformations: <span style="display:inline-block;width:280px;border-bottom:1px solid #aaa;">&nbsp;</span></p>
+      <div class="fill-row">
+        <div class="fill-item"><label>Amplitude</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>Period</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>H-shift</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>V-shift</label><input type="text" placeholder=""></div>
+      </div>
+      <p style="font-size:14px;margin-top:4px">Domain: <span style="display:inline-block;width:120px;border-bottom:1px solid #aaa;">&nbsp;</span> &nbsp; Range: <span style="display:inline-block;width:120px;border-bottom:1px solid #aaa;">&nbsp;</span></p>
+    </div>
+
+    <div class="collab-prob">
+      <p class="prob"><strong>3. \(y = 4\sin\!\left(\dfrac{1}{4}(x + 2)\right)\)</strong></p>
+      <p style="font-size:13px;color:#777;margin-bottom:8px">Transformations: <span style="display:inline-block;width:280px;border-bottom:1px solid #aaa;">&nbsp;</span></p>
+      <div class="fill-row">
+        <div class="fill-item"><label>Amplitude</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>Period</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>H-shift</label><input type="text" placeholder=""></div>
+        <div class="fill-item"><label>V-shift</label><input type="text" placeholder=""></div>
+      </div>
+      <p style="font-size:14px;margin-top:4px">Domain: <span style="display:inline-block;width:120px;border-bottom:1px solid #aaa;">&nbsp;</span> &nbsp; Range: <span style="display:inline-block;width:120px;border-bottom:1px solid #aaa;">&nbsp;</span></p>
+    </div>
+  </div>
+</div><!-- end tab 4 -->
+
+<!-- ══════════════════════════════════════════════
+     EXIT CHECK
+══════════════════════════════════════════════ -->
+<section id="exit-check" style="max-width:960px;margin:0 auto">
+  <h2>📋 Exit Check — Lesson 12, Part 1</h2>
+
+  <!-- Q1 — multiple choice -->
+  <div class="exit-q">
+    <p>1. What is the amplitude and period of \(g(x) = -3\sin(4x) + 1\)?</p>
+    <label><input type="radio" name="q1" value="a"> (A) Amplitude = 3, Period = \(\dfrac{\pi}{2}\)</label>
+    <label><input type="radio" name="q1" value="b"> (B) Amplitude = 3, Period = \(\dfrac{\pi}{4}\)</label>
+    <label><input type="radio" name="q1" value="c"> (C) Amplitude = −3, Period = \(\dfrac{\pi}{2}\)</label>
+    <label><input type="radio" name="q1" value="d"> (D) Amplitude = 3, Period = \(2\pi\)</label>
+    <br>
+    <button class="btn-teal btn-sm" onclick="checkMC('q1','a','Amplitude = |A| = |-3| = 3. Period = 2π/|B| = 2π/4 = π/2. Note: amplitude is always positive — it is the absolute value of A.')">Check Answer</button>
+    <div id="q1-feedback" class="fb-box"></div>
+  </div>
+
+  <!-- Q2 — short answer -->
+  <div class="exit-q">
+    <p>2. The function \(y = 2\cos\!\left(\dfrac{1}{2}x - \pi\right) + 3\) has a phase shift. <br>What is it, and in which direction? (Show your factoring step.)</p>
+    <textarea rows="4" style="width:90%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;margin:8px 0"></textarea><br>
+    <button class="btn-orange btn-sm" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">See Model Answer</button>
+    <div class="fb-box" style="display:none;background:#e6f4f4">
+      <strong>Model Answer:</strong><br>
+      Factor out \(B = \frac{1}{2}\):<br>
+      \(y = 2\cos\!\left(\tfrac{1}{2}\bigl(x - 2\pi\bigr)\right) + 3\)<br>
+      Now read \(D\) directly: \(D = 2\pi\) → <strong>phase shift right \(2\pi\)</strong>.<br>
+      (Not \(\pi\) — always factor first!)
+    </div>
+  </div>
+
+  <!-- Q3 — short answer about reciprocal -->
+  <div class="exit-q">
+    <p>3. Why does \(\csc(x)\) have vertical asymptotes at \(x = k\pi\)? Explain using the definition \(\csc(x) = \dfrac{1}{\sin(x)}\).</p>
+    <textarea rows="3" style="width:90%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;margin:8px 0"></textarea><br>
+    <button class="btn-orange btn-sm" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">See Model Answer</button>
+    <div class="fb-box" style="display:none;background:#e6f4f4">
+      <strong>Model Answer:</strong><br>
+      At \(x = k\pi\), \(\sin(x) = 0\). Since \(\csc(x) = \frac{1}{\sin(x)}\), division by zero is undefined — so \(\csc(x)\) has vertical asymptotes precisely at every \(x = k\pi\).
+    </div>
+  </div>
+
+  <!-- Confidence rating -->
+  <div class="exit-q">
+    <p><strong>How confident are you with today's Part 1 objectives?</strong></p>
+    <div id="stars">☆☆☆☆☆</div>
+    <p id="star-label"></p>
+    <p style="font-size:12px;color:#888;margin-top:6px">1 = still confused &nbsp;|&nbsp; 5 = I could explain this to someone else</p>
+  </div>
+</section>
+
+<footer>
+  Math 172 — Precalculus &nbsp;|&nbsp; Lesson 12: Trig Functions &amp; Inverse Trig Functions, Part 1 &nbsp;|&nbsp; Santa Ana College<br>
+  <span style="font-size:11px">Source: OpenStax Algebra and Trigonometry 2e, Sections 8.1–8.2 (OER — CC BY 4.0)</span>
+</footer>
+
+<!-- ══ DESMOS API ══ -->
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+
+<script>
+/* ── YOUTUBE TOGGLE ── */
+function toggleYT(btn) {
+  const panel = btn.nextElementSibling;
+  const open = panel.style.display === 'block';
+  panel.style.display = open ? 'none' : 'block';
+  const label = btn.querySelector('.yt-label');
+  label.textContent = open ? label.dataset.closed : label.dataset.open;
+  // Pause video on close by resetting src
+  if (open) {
+    const iframe = panel.querySelector('iframe');
+    if (iframe) { iframe.src = iframe.src; }
+  }
+}
+
+/* ── BUILD VIDEO PANELS FROM videos.js ── */
+function buildVideoPanels() {
+  const map = {
+    's1': { id: 'yt-panel-s1', title: 'Graphing Sine and Cosine' },
+    's2': { id: 'yt-panel-s2', title: 'Graphing the Tangent Function' },
+    's3': { id: 'yt-panel-s3', title: 'Reciprocal Trig Functions' },
+    's4': { id: 'yt-panel-s4', title: 'Transformations of Trig Functions' },
+  };
+  // VIDEOS is loaded from videos.js
+  if (typeof VIDEOS === 'undefined') return;
+  Object.entries(map).forEach(([key, cfg]) => {
+    const panel = document.getElementById(cfg.id);
+    if (!panel) return;
+    const videoId = VIDEOS[key];
+    if (!videoId || videoId.startsWith('YOUR_VIDEO')) {
+      // Show a friendly placeholder if ID not set yet
+      panel.innerHTML = `<div style="background:#f0f0f0;padding:24px;text-align:center;
+        font-size:14px;color:#888;font-style:italic;">
+        Video coming soon — add the YouTube ID to videos.js to activate this explainer.
+      </div>`;
+    } else {
+      panel.innerHTML = `<iframe
+        src="https://www.youtube.com/embed/${videoId}"
+        title="${cfg.title} — Explainer"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen style="display:block;width:100%;height:380px;">
+      </iframe>`;
+    }
+  });
+}
+
+/* ── TAB SWITCHING ── */
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── REVEAL STEPS ── */
+function revealSteps(id) {
+  const steps = document.getElementById(id + '-steps');
+  if (steps) {
+    steps.classList.remove('hidden');
+    steps.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  event.target.style.display = 'none';
+}
+
+/* ── MC CHECK ── */
+function checkMC(name, correct, explanation) {
+  const selected = document.querySelector(`input[name="${name}"]:checked`);
+  const fb = document.getElementById(name + '-feedback');
+  if (!selected) {
+    fb.style.display = 'block'; fb.style.background = '#fff3e6';
+    fb.textContent = 'Please select an answer first.'; return;
+  }
+  if (selected.value === correct) {
+    fb.style.display = 'block'; fb.style.background = '#e6f4f4';
+    fb.style.color = '#1a6b6b'; fb.innerHTML = '✅ Correct! ' + explanation;
+  } else {
+    fb.style.display = 'block'; fb.style.background = '#fdecea';
+    fb.style.color = '#c0392b'; fb.innerHTML = '❌ Not quite. ' + explanation;
+  }
+}
+
+/* ── STAR RATING ── */
+const starLabels = ['','Not confident yet','Somewhat unsure','Mostly got it','Confident','Very confident — I could explain this!'];
+document.getElementById('stars').addEventListener('click', function(e) {
+  const rect = this.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const rating = Math.min(5, Math.max(1, Math.ceil(x / (rect.width / 5))));
+  this.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  document.getElementById('star-label').textContent = starLabels[rating] || '';
+});
+
+/* ── DESMOS CALCULATORS ── */
+document.addEventListener('DOMContentLoaded', function() {
+  buildVideoPanels();
+
+  const opts = { expressions: false, settingsMenu: false, lockViewport: false, zoomButtons: true };
+  const optsEx = { expressions: true, settingsMenu: false, lockViewport: false, zoomButtons: true };
+
+  /* §1 — sin(x) */
+  const sinCalc = Desmos.GraphingCalculator(document.getElementById('desmos-sin'), opts);
+  sinCalc.setMathBounds({ left: -1, right: 7, bottom: -1.6, top: 1.6 });
+  sinCalc.setExpression({ id:'sin1', latex:'y=\\sin(x)', color:'#1a6b6b', lineWidth:2.5 });
+  sinCalc.setExpression({ id:'pmax', latex:'\\left(\\frac{\\pi}{2},1\\right)', label:'max', showLabel:true, color:'#e07020', pointStyle:Desmos.Styles.POINT });
+  sinCalc.setExpression({ id:'pmin', latex:'\\left(\\frac{3\\pi}{2},-1\\right)', label:'min', showLabel:true, color:'#e07020', pointStyle:Desmos.Styles.POINT });
+
+  /* §1 — cos(x) */
+  const cosCalc = Desmos.GraphingCalculator(document.getElementById('desmos-cos'), opts);
+  cosCalc.setMathBounds({ left: -1, right: 7, bottom: -1.6, top: 1.6 });
+  cosCalc.setExpression({ id:'cos1', latex:'y=\\cos(x)', color:'#e07020', lineWidth:2.5 });
+  cosCalc.setExpression({ id:'pcmax', latex:'(0,1)', label:'max', showLabel:true, color:'#1a6b6b', pointStyle:Desmos.Styles.POINT });
+  cosCalc.setExpression({ id:'pcmin', latex:'(\\pi,-1)', label:'min', showLabel:true, color:'#1a6b6b', pointStyle:Desmos.Styles.POINT });
+
+  /* §2 — tan(x) */
+  const tanCalc = Desmos.GraphingCalculator(document.getElementById('desmos-tan'), opts);
+  tanCalc.setMathBounds({ left: -2, right: 8, bottom: -5, top: 5 });
+  tanCalc.setExpression({ id:'tan1', latex:'y=\\tan(x)', color:'#1a6b6b', lineWidth:2.5 });
+  tanCalc.setExpression({ id:'asym1', latex:'x=-\\frac{\\pi}{2}', color:'#cc3333', lineStyle:Desmos.Styles.DASHED });
+  tanCalc.setExpression({ id:'asym2', latex:'x=\\frac{\\pi}{2}', color:'#cc3333', lineStyle:Desmos.Styles.DASHED });
+  tanCalc.setExpression({ id:'asym3', latex:'x=\\frac{3\\pi}{2}', color:'#cc3333', lineStyle:Desmos.Styles.DASHED });
+  tanCalc.setExpression({ id:'asym4', latex:'x=-\\frac{3\\pi}{2}', color:'#cc3333', lineStyle:Desmos.Styles.DASHED });
+
+  /* §3 — sin + csc */
+  const cscCalc = Desmos.GraphingCalculator(document.getElementById('desmos-csc'), opts);
+  cscCalc.setMathBounds({ left: -0.5, right: 7, bottom: -4, top: 4 });
+  cscCalc.setExpression({ id:'sinp', latex:'y=\\sin(x)', color:'#888888', lineWidth:1.5, lineStyle:Desmos.Styles.DASHED });
+  cscCalc.setExpression({ id:'cscp', latex:'y=\\csc(x)', color:'#1a6b6b', lineWidth:2.5 });
+
+  /* §3 — cos + sec */
+  const secCalc = Desmos.GraphingCalculator(document.getElementById('desmos-sec'), opts);
+  secCalc.setMathBounds({ left: -0.5, right: 7, bottom: -4, top: 4 });
+  secCalc.setExpression({ id:'cosp', latex:'y=\\cos(x)', color:'#888888', lineWidth:1.5, lineStyle:Desmos.Styles.DASHED });
+  secCalc.setExpression({ id:'secp', latex:'y=\\sec(x)', color:'#e07020', lineWidth:2.5 });
+
+  /* §3 — tan + cot */
+  const cotCalc = Desmos.GraphingCalculator(document.getElementById('desmos-cot'), opts);
+  cotCalc.setMathBounds({ left: -0.5, right: 7, bottom: -5, top: 5 });
+  cotCalc.setExpression({ id:'tanp2', latex:'y=\\tan(x)', color:'#888888', lineWidth:1.5, lineStyle:Desmos.Styles.DASHED });
+  cotCalc.setExpression({ id:'cotp',  latex:'y=\\cot(x)', color:'#1a6b6b', lineWidth:2.5 });
+
+  /* §4 — transformation explorer with sliders */
+  const trCalc = Desmos.GraphingCalculator(document.getElementById('desmos-transform'), optsEx);
+  trCalc.setMathBounds({ left: -1, right: 8, bottom: -2.5, top: 2.5 });
+  trCalc.setExpression({ id:'slA', latex:'A=1.5', sliderBounds:{ min: 0.1, max: 4, step: 0.1 } });
+  trCalc.setExpression({ id:'slB', latex:'B=2',   sliderBounds:{ min: 0.1, max: 4, step: 0.1 } });
+  trCalc.setExpression({ id:'fg',  latex:'y=\\cos(x)', color:'#888888', lineWidth:1.5, lineStyle:Desmos.Styles.DASHED });
+  trCalc.setExpression({ id:'gg',  latex:'y=A\\cos(Bx)', color:'#1a6b6b', lineWidth:2.5 });
+
+  /* §4 — worked example */
+  const exCalc = Desmos.GraphingCalculator(document.getElementById('desmos-example'), opts);
+  exCalc.setMathBounds({ left: -1, right: 10, bottom: -8.5, top: 1.5 });
+  exCalc.setExpression({ id:'exf', latex:'y=3\\sin\\left(\\frac{3}{2}\\left(x-\\pi\\right)\\right)-4', color:'#1a6b6b', lineWidth:2.5 });
+  exCalc.setExpression({ id:'mid', latex:'y=-4', color:'#e07020', lineStyle:Desmos.Styles.DASHED, lineWidth:1.5 });
+  exCalc.setExpression({ id:'labelmid', latex:'(-0.5,-4)', label:'midline y=-4', showLabel:true, color:'#e07020', pointOpacity:0 });
+
+});
+</script>
+</body>
+</html>
