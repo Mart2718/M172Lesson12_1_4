@@ -108,6 +108,16 @@
   #stars{font-size:32px;cursor:pointer;letter-spacing:6px;display:inline-block}
   #star-label{font-size:13px;color:#888;margin-top:4px}
 
+  /* ── YOUTUBE TOGGLE ── */
+  .yt-toggle{width:100%;text-align:left;background:#1a1a2e;color:#fff;border:none;
+    padding:11px 18px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;
+    margin:20px 0 0;display:flex;align-items:center;gap:10px;transition:background .2s}
+  .yt-toggle:hover{background:#2a2a4e}
+  .yt-toggle .yt-icon{font-size:18px;flex-shrink:0}
+  .yt-panel{display:none;margin-top:4px;border-radius:0 0 8px 8px;overflow:hidden;
+    border:1px solid #ddd;border-top:none}
+  .yt-panel iframe{display:block;width:100%;height:380px}
+
   /* ── FOOTER ── */
   footer{text-align:center;font-size:12px;color:#888;padding:24px;border-top:2px solid #1a1a2e;margin-top:40px}
 
@@ -196,6 +206,26 @@
 
   <div class="remind" style="margin-top:12px">
     <p><strong>🔑 Sine vs. Cosine Connection:</strong> \(\cos(x) = \sin\!\left(x + \dfrac{\pi}{2}\right)\) — cosine is just sine shifted left by \(\dfrac{\pi}{2}\). They are the same wave, just out of phase!</p>
+  </div>
+
+  <!-- 📺 VIDEO EXPLAINER — SECTION 1 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Graphing Sine &amp; Cosine"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Graphing Sine &amp; Cosine
+    </span>
+  </button>
+  <div class="yt-panel">
+    <!-- Replace YOUR_VIDEO_ID_S1 with the 11-char YouTube video ID -->
+    <iframe
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S1"
+      title="Graphing Sine and Cosine — Explainer"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <!-- GUIDED PRACTICE -->
@@ -294,6 +324,26 @@
     <p><strong>🔑 Why no amplitude?</strong> Amplitude measures the maximum distance from the midline. Since \(\tan(x)\) grows without bound near its asymptotes, there is no finite maximum — so amplitude is not defined for tangent (or cotangent).</p>
   </div>
 
+  <!-- 📺 VIDEO EXPLAINER — SECTION 2 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Graphing Tangent"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Graphing Tangent
+    </span>
+  </button>
+  <div class="yt-panel">
+    <!-- Replace YOUR_VIDEO_ID_S2 with the 11-char YouTube video ID -->
+    <iframe
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S2"
+      title="Graphing the Tangent Function — Explainer"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
   <!-- GUIDED PRACTICE -->
   <div class="practice">
     <h3>✏ Guided Practice</h3>
@@ -375,6 +425,26 @@
   <!-- DESMOS: tan + cot -->
   <div class="subsec">3. \(f(x) = \tan(x)\) and \(g(x) = \cot(x)\)</div>
   <div id="desmos-cot" style="width:100%;height:380px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <!-- 📺 VIDEO EXPLAINER — SECTION 3 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Reciprocal Trig Functions"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Reciprocal Trig Functions
+    </span>
+  </button>
+  <div class="yt-panel">
+    <!-- Replace YOUR_VIDEO_ID_S3 with the 11-char YouTube video ID -->
+    <iframe
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S3"
+      title="Reciprocal Trig Functions — Explainer"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <!-- Guided Practice -->
   <div class="practice">
@@ -458,6 +528,26 @@
   <div class="subsec">Interactive Explorer: Effect of A and B</div>
   <p style="font-size:14px;margin-bottom:8px">Use the sliders below to change \(A\) and \(B\). Watch how the graph changes in real time. Start with \(A=1, B=1\) (the basic cosine), then try \(A=1.5, B=2\).</p>
   <div id="desmos-transform" style="width:100%;height:420px;border:1px solid #ccc;border-radius:8px;margin:12px 0;"></div>
+
+  <!-- 📺 VIDEO EXPLAINER — SECTION 4 -->
+  <button class="yt-toggle" onclick="toggleYT(this)">
+    <span class="yt-icon">▶</span>
+    <span class="yt-label"
+      data-closed="▶ Watch Explainer — Transformations of Trig Functions"
+      data-open="▼ Hide Explainer Video">
+      ▶ Watch Explainer — Transformations of Trig Functions
+    </span>
+  </button>
+  <div class="yt-panel">
+    <!-- Replace YOUR_VIDEO_ID_S4 with the 11-char YouTube video ID -->
+    <iframe
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S4"
+      title="Transformations of Trig Functions — Explainer"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <!-- GUIDED PRACTICE TABLE -->
   <div class="practice">
@@ -627,6 +717,20 @@
 <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 
 <script>
+/* ── YOUTUBE TOGGLE ── */
+function toggleYT(btn) {
+  const panel = btn.nextElementSibling;
+  const open = panel.style.display === 'block';
+  panel.style.display = open ? 'none' : 'block';
+  const label = btn.querySelector('.yt-label');
+  label.textContent = open ? label.dataset.closed : label.dataset.open;
+  // Pause video on close by reloading src
+  if (open) {
+    const iframe = panel.querySelector('iframe');
+    if (iframe) { iframe.src = iframe.src; }
+  }
+}
+
 /* ── TAB SWITCHING ── */
 function switchTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
