@@ -13,7 +13,7 @@
 // ═══════════════════════════════════════════════════════════
 
 const VIDEOS = {
-  s1: "YOUR_VIDEO_ID_S1",   // §1 — Graphing Sine & Cosine
+  s1: "lUk4R-oL1o4",   // §1 — Graphing Sine & Cosine
   s2: "YOUR_VIDEO_ID_S2",   // §2 — Graphing Tangent
   s3: "YOUR_VIDEO_ID_S3",   // §3 — Reciprocal Trig Functions
   s4: "YOUR_VIDEO_ID_S4",   // §4 — Transformations of Trig Functions
