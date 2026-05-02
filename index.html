@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lesson 12: Trig Functions | Math 172 — SAC</title>
+<script src="videos.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -217,16 +218,7 @@
       ▶ Watch Explainer — Graphing Sine &amp; Cosine
     </span>
   </button>
-  <div class="yt-panel">
-    <!-- Replace YOUR_VIDEO_ID_S1 with the 11-char YouTube video ID -->
-    <iframe
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S1"
-      title="Graphing Sine and Cosine — Explainer"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
+  <div class="yt-panel" id="yt-panel-s1"></div>
 
   <!-- GUIDED PRACTICE -->
   <div class="practice">
@@ -333,16 +325,7 @@
       ▶ Watch Explainer — Graphing Tangent
     </span>
   </button>
-  <div class="yt-panel">
-    <!-- Replace YOUR_VIDEO_ID_S2 with the 11-char YouTube video ID -->
-    <iframe
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S2"
-      title="Graphing the Tangent Function — Explainer"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
+  <div class="yt-panel" id="yt-panel-s2"></div>
 
   <!-- GUIDED PRACTICE -->
   <div class="practice">
@@ -435,16 +418,7 @@
       ▶ Watch Explainer — Reciprocal Trig Functions
     </span>
   </button>
-  <div class="yt-panel">
-    <!-- Replace YOUR_VIDEO_ID_S3 with the 11-char YouTube video ID -->
-    <iframe
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S3"
-      title="Reciprocal Trig Functions — Explainer"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
+  <div class="yt-panel" id="yt-panel-s3"></div>
 
   <!-- Guided Practice -->
   <div class="practice">
@@ -538,16 +512,7 @@
       ▶ Watch Explainer — Transformations of Trig Functions
     </span>
   </button>
-  <div class="yt-panel">
-    <!-- Replace YOUR_VIDEO_ID_S4 with the 11-char YouTube video ID -->
-    <iframe
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID_S4"
-      title="Transformations of Trig Functions — Explainer"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
+  <div class="yt-panel" id="yt-panel-s4"></div>
 
   <!-- GUIDED PRACTICE TABLE -->
   <div class="practice">
@@ -724,11 +689,43 @@ function toggleYT(btn) {
   panel.style.display = open ? 'none' : 'block';
   const label = btn.querySelector('.yt-label');
   label.textContent = open ? label.dataset.closed : label.dataset.open;
-  // Pause video on close by reloading src
+  // Pause video on close by resetting src
   if (open) {
     const iframe = panel.querySelector('iframe');
     if (iframe) { iframe.src = iframe.src; }
   }
+}
+
+/* ── BUILD VIDEO PANELS FROM videos.js ── */
+function buildVideoPanels() {
+  const map = {
+    's1': { id: 'yt-panel-s1', title: 'Graphing Sine and Cosine' },
+    's2': { id: 'yt-panel-s2', title: 'Graphing the Tangent Function' },
+    's3': { id: 'yt-panel-s3', title: 'Reciprocal Trig Functions' },
+    's4': { id: 'yt-panel-s4', title: 'Transformations of Trig Functions' },
+  };
+  // VIDEOS is loaded from videos.js
+  if (typeof VIDEOS === 'undefined') return;
+  Object.entries(map).forEach(([key, cfg]) => {
+    const panel = document.getElementById(cfg.id);
+    if (!panel) return;
+    const videoId = VIDEOS[key];
+    if (!videoId || videoId.startsWith('YOUR_VIDEO')) {
+      // Show a friendly placeholder if ID not set yet
+      panel.innerHTML = `<div style="background:#f0f0f0;padding:24px;text-align:center;
+        font-size:14px;color:#888;font-style:italic;">
+        Video coming soon — add the YouTube ID to videos.js to activate this explainer.
+      </div>`;
+    } else {
+      panel.innerHTML = `<iframe
+        src="https://www.youtube.com/embed/${videoId}"
+        title="${cfg.title} — Explainer"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen style="display:block;width:100%;height:380px;">
+      </iframe>`;
+    }
+  });
 }
 
 /* ── TAB SWITCHING ── */
@@ -780,6 +777,7 @@ document.getElementById('stars').addEventListener('click', function(e) {
 
 /* ── DESMOS CALCULATORS ── */
 document.addEventListener('DOMContentLoaded', function() {
+  buildVideoPanels();
 
   const opts = { expressions: false, settingsMenu: false, lockViewport: false, zoomButtons: true };
   const optsEx = { expressions: true, settingsMenu: false, lockViewport: false, zoomButtons: true };
