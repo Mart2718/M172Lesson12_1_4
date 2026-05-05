@@ -13,8 +13,8 @@
 // ═══════════════════════════════════════════════════════════
 
 const VIDEOS = {
-  s1: "lUk4R-oL1o4",   // §1 — Graphing Sine & Cosine
-  s2: "YOUR_VIDEO_ID_S2",   // §2 — Graphing Tangent
-  s3: "YOUR_VIDEO_ID_S3",   // §3 — Reciprocal Trig Functions
-  s4: "YOUR_VIDEO_ID_S4",   // §4 — Transformations of Trig Functions
+  s1: "Gs1cg9WVgwI",   // §1 — Graphing Sine & Cosine
+  s2: "5xtCn5Py_3w",   // §2 — Graphing Tangent
+  s3: "wmMyqmC52a0",   // §3 — Reciprocal Trig Functions
+  s4: "WWWHOcml0Qw",   // §4 — Transformations of Trig Functions
 };
